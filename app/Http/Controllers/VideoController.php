@@ -33,6 +33,27 @@ class VideoController extends Controller
 
     }
 
+    public function showAllVideo(){
+        return Video::all();
+    }
+
+    public function showVideoById($id){
+        return Video::findOrFail($id);
+    }
+
+    public function featuredVideo()
+    {
+        return Video::where('is_featured', '=', 'true')->get();
+    }
+
+    public function getCategories(){
+        return Video::select('category')->distinct()->get();
+    }
+
+    public function getByCategories($categories){
+        return Video::where('category', '=', $categories)->get();
+    }
+
     public function testVideo(Request $request): array
     {
         $file_name = $request->file('file')->getClientOriginalName();

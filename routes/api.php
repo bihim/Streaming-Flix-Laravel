@@ -21,3 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/test', [VideoController::class, 'testVideo']);
 Route::post('/video/add',[VideoController::class,'addVideo']);
+Route::get('/videos',[VideoController::class,'showAllVideo']);
+Route::get('/videos/{id}',[VideoController::class,'showVideoById']);
+Route::get('/featured',[VideoController::class,'featuredVideo']);
+Route::get('/categories',[VideoController::class,'getCategories']);
+Route::get('/categories/{category}',[VideoController::class,'getByCategories']);
