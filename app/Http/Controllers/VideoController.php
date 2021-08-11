@@ -33,6 +33,28 @@ class VideoController extends Controller
 
     }
 
+    public function justAddVideo(Request $request): array
+    {
+
+        $video = new Video();
+        $video->name = 'Example';
+        $video->year = 'Example';
+        $video->description = 'Example';
+        $video->category = 'Example';
+        $video->image_link = 'Example';
+        //$video->video_link = $request->video_link;
+        $video->is_featured = 'true';
+
+        $file_name = $request->file("file")->getClientOriginalName();
+        $final_name = str_replace(' ', '', $file_name);
+        $video_url = $request->file("file")->storeAs("public", $final_name);
+        $video->video_link = str_replace('public', 'storage', $video_url);
+
+        $save = $video->save();
+        return ["status"=>$save];
+
+    }
+
     public function showAllVideo(){
         return Video::all();
     }

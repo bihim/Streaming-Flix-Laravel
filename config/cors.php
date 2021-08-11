@@ -19,11 +19,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['GET, POST, PUT, PATCH, DELETE, OPTIONS'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['Accept, Content-Type, Authorization, X-Requested-With, Origin'],
 
     'exposed_headers' => [],
 

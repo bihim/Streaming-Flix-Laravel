@@ -21,8 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/test', [VideoController::class, 'testVideo']);
 Route::post('/video/add',[VideoController::class,'addVideo']);
+Route::post('/video/justAdd',[VideoController::class,'justAddVideo']);
 Route::get('/videos',[VideoController::class,'showAllVideo']);
 Route::get('/videos/{id}',[VideoController::class,'showVideoById']);
 Route::get('/featured',[VideoController::class,'featuredVideo']);
 Route::get('/categories',[VideoController::class,'getCategories']);
 Route::get('/categories/{category}',[VideoController::class,'getByCategories']);
+
+/*Route::group([
+    'middleware' => ['api', 'cors'],
+    'namespace' => $this->namespace,
+    'prefix' => 'api',
+], function ($router) {
+    //Add you routes here, for example:
+    Route::post('/video/justAdd',[VideoController::class,'justAddVideo']);
+});*/
